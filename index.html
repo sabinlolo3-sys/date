@@ -2,3934 +2,710 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#160813">
-
-<title>Go Out With Me Cherissa? 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#170a13">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E">
+<title>Go out with me, Cherissa? 💗</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS
+   A love-letter kept in a pocket: deep wine paper, a rose ribbon,
+   one line of gold, one line of script — used once, where it matters.
+═══════════════════════════════════════════════════════════════ */
 :root{
-    --bg:#10070f;
-    --bg2:#24101f;
-
-    --pink:#ff4f91;
-    --pink-light:#ff83b2;
-    --soft-pink:#ffd0df;
-
-    --text:#fff7fb;
-    --muted:#b48da3;
+  --ink:      #170a13;
+  --wine:     #2c1122;
+  --wine2:    #3d1a31;
+  --card:     #33132a;
+  --rose:     #ff4f8f;
+  --rose-deep:#d6356e;
+  --rose-soft:#ff9dc0;
+  --gold:     #f0c987;
+  --gold-deep:#c99a4e;
+  --cream:    #fff6fa;
+  --muted:    #c79bb0;
+  --muted-dim:#8f6b7e;
+  --sa-t: env(safe-area-inset-top, 0px);
+  --sa-b: env(safe-area-inset-bottom, 0px);
+  --sa-l: env(safe-area-inset-left, 0px);
+  --sa-r: env(safe-area-inset-right, 0px);
 }
-
-html{
-    scroll-behavior:smooth;
-}
-
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;height:100%;}
 body{
+  min-height:100vh; min-height:100svh;
+  font-family:'DM Sans',sans-serif;
+  color:var(--cream);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,79,143,.16), transparent 32%),
+    radial-gradient(circle at 88% 85%, rgba(214,53,110,.14), transparent 34%),
+    linear-gradient(150deg, #130810 0%, #24101d 45%, var(--ink) 100%);
+  display:flex; align-items:center; justify-content:center;
+  padding:22px; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:contain;
+}
+button{font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+::selection{background:var(--rose);color:#fff;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px;}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}}
 
-    min-height:100vh;
+.script{font-family:'Great Vibes',cursive;}
+.romantic-italic{font-family:'Cormorant Garamond',serif;font-style:italic;}
 
-    font-family:"DM Sans",sans-serif;
-
-    color:var(--text);
-
-    background:
-
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(255,62,137,.18),
-            transparent 27%
-        ),
-
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(150,50,255,.12),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #0e060d,
-            #1d0a19 45%,
-            #160812
-        );
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    overflow-x:hidden;
+/* ═══════════════════════════════════════════════════════════════
+   AMBIENT BACKGROUND — one quiet, ongoing motion
+═══════════════════════════════════════════════════════════════ */
+.orb{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.22;z-index:0;}
+.orb1{width:260px;height:260px;background:var(--rose);left:-110px;top:-90px;}
+.orb2{width:300px;height:300px;background:#7c3aad;right:-130px;bottom:-110px;}
+.drift{position:fixed;bottom:-40px;pointer-events:none;z-index:1;color:rgba(255,140,180,.16);animation:driftUp linear forwards;}
+@keyframes driftUp{
+  from{transform:translateY(0) translateX(0) rotate(0deg);opacity:0;}
+  12%{opacity:1;}
+  to{transform:translateY(-112vh) translateX(var(--dx,0px)) rotate(30deg);opacity:0;}
 }
 
-
-/* ===============================
-   BACKGROUND
-================================ */
-
-.orb{
-
-    position:fixed;
-
-    border-radius:50%;
-
-    filter:blur(65px);
-
-    pointer-events:none;
-
-    opacity:.25;
-}
-
-.orb1{
-
-    width:250px;
-    height:250px;
-
-    background:#ff3e89;
-
-    left:-100px;
-    top:-80px;
-}
-
-.orb2{
-
-    width:280px;
-    height:280px;
-
-    background:#7e37ff;
-
-    right:-120px;
-    bottom:-100px;
-}
-
-
-.background-heart{
-
-    position:fixed;
-
-    bottom:-30px;
-
-    pointer-events:none;
-
-    color:rgba(255,120,170,.13);
-
-    animation:heartFloat linear forwards;
-}
-
-@keyframes heartFloat{
-
-    from{
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity:0;
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    to{
-
-        transform:
-            translateY(-115vh)
-            rotate(35deg);
-
-        opacity:0;
-    }
-}
-
-
-/* ===============================
-   MAIN APP
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   APP CARD
+═══════════════════════════════════════════════════════════════ */
 .app{
-
-    width:min(95vw,470px);
-
-    height:min(920px,95vh);
-
-    min-height:700px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:35px;
-
-    background:
-
-        linear-gradient(
-            150deg,
-            rgba(58,22,49,.95),
-            rgba(18,7,17,.98)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    box-shadow:
-
-        0 40px 100px rgba(0,0,0,.60),
-
-        0 8px 0 rgba(255,255,255,.025) inset,
-
-        0 -15px 30px rgba(0,0,0,.25) inset,
-
-        0 0 70px rgba(255,79,145,.10);
-
-    backdrop-filter:blur(15px);
-
-    z-index:5;
+  width:min(94vw,460px);
+  height:min(900px,94svh); height:min(900px,94vh);
+  min-height:640px;
+  position:relative; z-index:5;
+  overflow:hidden; border-radius:32px;
+  background:linear-gradient(160deg, rgba(61,26,49,.96), rgba(19,8,16,.98));
+  border:1px solid rgba(240,201,135,.16);
+  box-shadow:
+    0 44px 110px rgba(0,0,0,.62),
+    0 1px 0 rgba(255,255,255,.03) inset,
+    0 -18px 34px rgba(0,0,0,.28) inset,
+    0 0 80px rgba(255,79,143,.09);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
 }
-
-
 .app::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    background:
-
-        linear-gradient(
-            120deg,
-            rgba(255,255,255,.10),
-            transparent 20%,
-            transparent 75%,
-            rgba(255,255,255,.02)
-        );
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(120deg, rgba(255,255,255,.09), transparent 22%, transparent 74%, rgba(255,255,255,.02));
+}
+/* corner flourish — the one gold line */
+.app::after{
+  content:'';position:absolute;top:14px;left:14px;right:14px;bottom:14px;
+  border-radius:22px;border:1px solid rgba(240,201,135,.12);pointer-events:none;z-index:1;
 }
 
+.progress{position:absolute;top:calc(18px + var(--sa-t));left:26px;right:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;z-index:20;}
+.progress span{height:3px;border-radius:999px;background:rgba(255,255,255,.10);transition:background .35s ease,box-shadow .35s ease;}
+.progress span.active{background:linear-gradient(90deg,var(--gold),var(--rose));box-shadow:0 0 10px rgba(255,79,143,.4);}
 
-/* ===============================
-   PROGRESS BAR
-================================ */
-
-.progress{
-
-    position:absolute;
-
-    top:18px;
-    left:24px;
-    right:24px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:7px;
-
-    z-index:20;
-}
-
-
-.progress span{
-
-    height:4px;
-
-    border-radius:999px;
-
-    background:
-        rgba(255,255,255,.10);
-
-    transition:.3s ease;
-}
-
-
-.progress span.active{
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #ff9bc0,
-            #ff3f85
-        );
-
-    box-shadow:
-
-        0 0 13px
-        rgba(255,62,135,.45);
-}
-
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    SCREENS
-================================ */
-
+═══════════════════════════════════════════════════════════════ */
 .screen{
-
-    position:absolute;
-
-    inset:0;
-
-    padding:
-        65px 25px 30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    opacity:0;
-
-    transform:
-        translateX(45px)
-        scale(.98);
-
-    pointer-events:none;
-
-    transition:
-
-        opacity .4s ease,
-
-        transform .4s ease;
+  position:absolute; inset:0;
+  padding:calc(66px + var(--sa-t)) calc(26px + var(--sa-r)) calc(28px + var(--sa-b)) calc(26px + var(--sa-l));
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  opacity:0; transform:translateX(38px) scale(.98); pointer-events:none;
+  transition:opacity .42s ease, transform .42s ease;
 }
-
-
-.screen.active{
-
-    opacity:1;
-
-    transform:
-        translateX(0)
-        scale(1);
-
-    pointer-events:auto;
-}
-
-
-.screen.scrollable{
-
-    justify-content:flex-start;
-
-    overflow-y:auto;
-
-    scrollbar-width:none;
-}
-
-
-.screen.scrollable::-webkit-scrollbar{
-    display:none;
-}
-
-
-/* ===============================
-   BACK BUTTON
-================================ */
+.screen.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto;}
+.screen.scrollable{justify-content:flex-start;overflow-y:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.screen.scrollable::-webkit-scrollbar{display:none;}
 
 .back{
-
-    position:absolute;
-
-    top:42px;
-    left:23px;
-
-    padding:7px 11px;
-
-    border-radius:999px;
-
-    cursor:pointer;
-
-    font-size:12px;
-
-    color:#c2a1b3;
-
-    transition:.2s;
+  position:absolute;top:calc(40px + var(--sa-t));left:calc(22px + var(--sa-l));
+  padding:8px 13px;border-radius:999px;cursor:pointer;font-size:12.5px;color:var(--muted);
+  transition:background .2s,color .2s;min-height:36px;display:flex;align-items:center;
 }
+.back:hover,.back:focus-visible{background:rgba(255,255,255,.06);color:var(--cream);}
 
-
-.back:hover{
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:white;
+.character{min-height:130px;display:flex;align-items:center;justify-content:center;position:relative;}
+.character::before{
+  content:'';position:absolute;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,79,143,.22), transparent 68%);
+  filter:blur(4px);animation:auraPulse 3.4s ease-in-out infinite;
 }
-
-
-/* ===============================
-   CHARACTER
-================================ */
-
-.character{
-
-    min-height:145px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-}
-
-
-.emoji-bears{
-
-    font-size:80px;
-
-    filter:
-
-        drop-shadow(
-            0 18px 18px
-            rgba(0,0,0,.35)
-        );
-
-    animation:
-
-        bearFloat
-        2.8s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes bearFloat{
-
-    0%,
-    100%{
-
-        transform:
-            translateY(0);
-    }
-
-    50%{
-
-        transform:
-            translateY(-8px);
-    }
-}
-
-
-/* ===============================
-   TEXT
-================================ */
+@keyframes auraPulse{0%,100%{transform:scale(.92);opacity:.65;}50%{transform:scale(1.06);opacity:1;}}
+.emoji-bears{font-size:74px;position:relative;filter:drop-shadow(0 18px 20px rgba(0,0,0,.4));animation:bearFloat 2.8s ease-in-out infinite;}
+@keyframes bearFloat{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-8px) rotate(-2deg);}}
 
 .title{
-
-    font-family:
-        "Great Vibes",
-        cursive;
-
-    font-size:47px;
-
-    line-height:1;
-
-    color:#ffd0df;
-
-    text-align:center;
-
-    margin-bottom:13px;
-
-    text-shadow:
-
-        0 4px 0
-        rgba(130,36,76,.25),
-
-        0 0 25px
-        rgba(255,78,143,.18);
+  font-family:'Great Vibes',cursive;font-size:clamp(38px,9vw,48px);line-height:1.05;color:var(--cream);
+  text-align:center;margin-bottom:14px;
+  text-shadow:0 4px 0 rgba(130,36,76,.25), 0 0 26px rgba(255,88,145,.22);
 }
-
-
 .subtitle{
-
-    color:var(--muted);
-
-    font-size:12px;
-
-    line-height:1.6;
-
-    text-align:center;
-
-    margin-bottom:23px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  color:var(--muted);font-size:clamp(14px,3.6vw,16px);line-height:1.55;text-align:center;margin-bottom:24px;max-width:34ch;
 }
 
-
-/* ===============================
-   3D BUTTONS
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════════════════════ */
 .btn{
-
-    border:0;
-
-    outline:0;
-
-    font-family:inherit;
-
-    cursor:pointer;
-
-    border-radius:999px;
-
-    padding:
-        14px 29px;
-
-    min-width:110px;
-
-    font-size:13px;
-
-    font-weight:800;
-
-    transition:.18s ease;
+  border:0;outline:0;cursor:pointer;border-radius:999px;padding:14px 30px;min-width:112px;min-height:48px;
+  font-size:13.5px;font-weight:700;transition:transform .18s ease,box-shadow .18s ease;
 }
-
-
-.btn:hover{
-
-    transform:
-
-        translateY(-3px)
-        scale(1.02);
-}
-
-
-.btn:active{
-
-    transform:
-        translateY(3px);
-}
-
-
+.btn:hover{transform:translateY(-3px) scale(1.02);}
+.btn:active{transform:translateY(2px) scale(.99);}
 .btn-pink{
-
-    color:white;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #ff86b3,
-            #ff3e84
-        );
-
-    box-shadow:
-
-        0 9px 0
-        #992653,
-
-        0 16px 30px
-        rgba(255,62,132,.30),
-
-        inset 0 2px
-        rgba(255,255,255,.45);
+  color:#fff;background:linear-gradient(180deg,#ff86b6,var(--rose));
+  box-shadow:0 9px 0 #97244f, 0 18px 34px rgba(255,79,143,.32), inset 0 2px rgba(255,255,255,.4);
+  animation:heartbeat 2.6s ease-in-out infinite;
 }
-
-
-.answer-row{
-
-    display:flex;
-
-    gap:12px;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-height:80px;
-}
-
-
+@keyframes heartbeat{0%,100%{box-shadow:0 9px 0 #97244f,0 18px 34px rgba(255,79,143,.32),inset 0 2px rgba(255,255,255,.4);}50%{box-shadow:0 9px 0 #97244f,0 20px 42px rgba(255,79,143,.5),inset 0 2px rgba(255,255,255,.4);}}
+.answer-row{display:flex;gap:13px;align-items:center;justify-content:center;min-height:80px;}
 .no-btn{
-
-    color:#d9bfcd;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.08),
-            rgba(255,255,255,.03)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    box-shadow:
-
-        0 7px 0
-        rgba(0,0,0,.22),
-
-        inset 0 1px
-        rgba(255,255,255,.07);
-
-    transition:.16s ease;
+  color:#d9bfcd;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08);box-shadow:0 7px 0 rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.07);
 }
-
-
-/* ===============================
-   3D CARD
-================================ */
 
 .card3d{
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.022)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    box-shadow:
-
-        0 10px 0
-        rgba(0,0,0,.17),
-
-        0 22px 38px
-        rgba(0,0,0,.23),
-
-        inset 0 1px
-        rgba(255,255,255,.08);
+  background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 9px 0 rgba(0,0,0,.18), 0 22px 38px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.08);
 }
 
-
-/* ===============================
-   FULL YEAR CALENDAR
-================================ */
-
-.calendar-wrap{
-
-    width:100%;
-
-    padding:16px;
-
-    border-radius:24px;
-
-    margin-top:5px;
-}
-
-
-.calendar-top{
-
-    display:flex;
-
-    justify-content:
-        space-between;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:12px;
-}
-
-
+/* ═══════════════════════════════════════════════════════════════
+   CALENDAR
+═══════════════════════════════════════════════════════════════ */
+.calendar-wrap{width:100%;padding:16px;border-radius:22px;margin-top:4px;}
+.calendar-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;}
 .cal-nav{
-
-    width:40px;
-    height:40px;
-
-    flex:none;
-
-    border:0;
-
-    border-radius:13px;
-
-    cursor:pointer;
-
-    color:#ffe4ef;
-
-    font-size:22px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #421d38,
-            #27101f
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    box-shadow:
-
-        0 5px 0
-        rgba(0,0,0,.30);
+  width:40px;height:40px;flex:none;border:0;border-radius:13px;cursor:pointer;color:#ffe4ef;font-size:20px;
+  background:linear-gradient(180deg,#4a2140,#280f22);border:1px solid rgba(255,255,255,.08);box-shadow:0 5px 0 rgba(0,0,0,.3);
 }
+.cal-nav:disabled{opacity:.25;cursor:not-allowed;}
+.calendar-heading{text-align:center;}
+.calendar-heading small{display:block;color:var(--muted-dim);font-size:10.5px;font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:2px;}
+.calendar-heading strong{color:var(--rose-soft);font-size:17px;font-weight:700;}
 
-
-.cal-nav:disabled{
-
-    opacity:.25;
-
-    cursor:not-allowed;
-}
-
-
-.calendar-heading{
-
-    text-align:center;
-}
-
-
-.calendar-heading small{
-
-    display:block;
-
-    color:#98778a;
-
-    font-size:8px;
-
-    letter-spacing:1.8px;
-
-    margin-bottom:2px;
-}
-
-
-.calendar-heading strong{
-
-    color:#ffd5e4;
-
-    font-size:17px;
-}
-
-
-/* MONTHS JAN-DEC */
-
-.month-strip{
-
-    width:100%;
-
-    display:flex;
-
-    gap:7px;
-
-    overflow-x:auto;
-
-    padding:
-        3px 1px 12px;
-
-    scrollbar-width:none;
-}
-
-
-.month-strip::-webkit-scrollbar{
-    display:none;
-}
-
-
+.month-strip{width:100%;display:flex;gap:7px;overflow-x:auto;padding:3px 1px 12px;scrollbar-width:none;}
+.month-strip::-webkit-scrollbar{display:none;}
 .month-chip{
-
-    flex:
-        0 0 auto;
-
-    border:0;
-
-    padding:
-        7px 11px;
-
-    border-radius:999px;
-
-    cursor:pointer;
-
-    color:#9d8190;
-
-    font-size:9px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.05);
-
-    transition:.18s;
+  flex:0 0 auto;border:0;padding:7px 12px;border-radius:999px;cursor:pointer;color:#9d8190;font-size:10px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05);transition:.18s;min-height:30px;
 }
-
-
 .month-chip.active{
-
-    color:white;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #ff75a8,
-            #ff4388
-        );
-
-    box-shadow:
-
-        0 5px 0
-        #92264f,
-
-        0 9px 18px
-        rgba(255,65,135,.20);
+  color:#fff;background:linear-gradient(180deg,#ff86b6,#ff4f8f);
+  box-shadow:0 5px 0 #97244f, 0 9px 18px rgba(255,79,143,.22);
 }
 
-
-/* WEEK */
-
-.weekdays,
-.calendar-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(7,1fr);
-
-    gap:6px;
-}
-
-
-.weekdays{
-
-    margin:
-        3px 0 7px;
-}
-
-
-.weekdays span{
-
-    text-align:center;
-
-    color:#846878;
-
-    font-size:8px;
-
-    font-weight:700;
-}
-
-
-/* CALENDAR DAYS */
-
+.weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+.weekdays{margin:3px 0 7px;}
+.weekdays span{text-align:center;color:var(--muted-dim);font-size:10px;font-weight:600;}
 .calendar-day{
-
-    aspect-ratio:1;
-
-    min-height:35px;
-
-    border:0;
-
-    border-radius:11px;
-
-    font-family:inherit;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    color:#d9c0cd;
-
-    cursor:pointer;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.045);
-
-    box-shadow:
-
-        0 4px 0
-        rgba(0,0,0,.20),
-
-        inset 0 1px
-        rgba(255,255,255,.04);
-
-    transition:.16s ease;
+  aspect-ratio:1;min-height:36px;border:0;border-radius:11px;font-family:inherit;font-size:12px;font-weight:700;
+  color:#d9c0cd;cursor:pointer;
+  background:linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  border:1px solid rgba(255,255,255,.045);
+  box-shadow:0 4px 0 rgba(0,0,0,.2), inset 0 1px rgba(255,255,255,.04);
+  transition:transform .16s ease,border-color .16s ease,color .16s ease;
 }
-
-
-.calendar-day:hover{
-
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(255,84,150,.40);
-
-    color:white;
-}
-
-
-.calendar-day.today{
-
-    outline:
-        1px solid
-        rgba(255,210,226,.60);
-}
-
-
+.calendar-day:hover{transform:translateY(-2px);border-color:rgba(255,84,150,.4);color:#fff;}
+.calendar-day.today{outline:1px solid rgba(255,210,226,.6);}
 .calendar-day.selected{
-
-    color:white;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #ff88b6,
-            #ff3e85
-        );
-
-    border-color:#ff8eb8;
-
-    box-shadow:
-
-        0 5px 0
-        #92254f,
-
-        0 9px 20px
-        rgba(255,62,133,.30),
-
-        inset 0 1px
-        rgba(255,255,255,.40);
+  color:#fff;background:linear-gradient(180deg,#ff88b6,#ff4f8f);border-color:#ff8eb8;
+  box-shadow:0 5px 0 #97244f, 0 9px 20px rgba(255,79,143,.3), inset 0 1px rgba(255,255,255,.4);
 }
+.calendar-day.empty{opacity:0;pointer-events:none;}
+.selected-date{min-height:20px;text-align:center;color:var(--rose-soft);font-size:12px;font-style:italic;font-family:'Cormorant Garamond',serif;margin-top:12px;}
 
+.and-around{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--muted);font-size:16px;margin:16px 0 12px;text-align:center;}
 
-.calendar-day.empty{
-
-    opacity:0;
-
-    pointer-events:none;
-}
-
-
-.selected-date{
-
-    min-height:18px;
-
-    text-align:center;
-
-    color:#ffc2d8;
-
-    font-size:10px;
-
-    margin-top:12px;
-}
-
-
-/* ===============================
-   TIME
-================================ */
-
-.and-around{
-
-    font-family:
-        "Great Vibes",
-        cursive;
-
-    color:#d3a1b8;
-
-    font-size:23px;
-
-    margin:
-        15px 0 11px;
-}
-
-
-.time-grid{
-
-    width:100%;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:10px;
-}
-
-
+.time-grid{width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .time-choice{
-
-    padding:13px 7px;
-
-    border-radius:14px;
-
-    text-align:center;
-
-    cursor:pointer;
-
-    color:#c7a9b8;
-
-    font-size:10px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.06),
-            rgba(255,255,255,.02)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
-    box-shadow:
-
-        0 6px 0
-        rgba(0,0,0,.20),
-
-        inset 0 1px
-        rgba(255,255,255,.05);
-
-    transition:.17s ease;
+  padding:13px 8px;border-radius:14px;text-align:center;cursor:pointer;color:#c7a9b8;font-size:11px;
+  background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.06);box-shadow:0 6px 0 rgba(0,0,0,.2), inset 0 1px rgba(255,255,255,.05);
+  transition:transform .17s ease,border-color .17s ease;min-height:52px;
 }
-
-
-.time-choice strong{
-
-    color:#ffe2ed;
-
-    font-size:11px;
-}
-
-
-.time-choice:hover{
-
-    transform:
-        translateY(-2px);
-}
-
-
+.time-choice strong{color:#ffe2ed;font-size:12px;}
+.time-choice:hover{transform:translateY(-2px);}
 .time-choice.selected{
-
-    color:white;
-
-    border-color:#ff609b;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,82,147,.24),
-            rgba(255,255,255,.035)
-        );
-
-    box-shadow:
-
-        0 6px 0
-        #5a1734,
-
-        0 11px 20px
-        rgba(255,62,132,.13);
+  color:#fff;border-color:var(--rose);
+  background:linear-gradient(150deg,rgba(255,82,147,.24),rgba(255,255,255,.035));
+  box-shadow:0 6px 0 #5a1734, 0 11px 20px rgba(255,79,143,.14);
 }
 
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    OPTIONS
-================================ */
-
-.options{
-
-    width:100%;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:12px;
-}
-
-
-.option{
-
-    min-height:105px;
-
-    padding:17px;
-
-    border-radius:18px;
-
-    cursor:pointer;
-
-    transition:.2s ease;
-}
-
-
-.option:hover{
-
-    transform:
-
-        translateY(-5px)
-        rotateX(2deg);
-
-    border-color:
-        rgba(255,79,145,.35);
-}
-
-
+═══════════════════════════════════════════════════════════════ */
+.options{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.option{min-height:108px;padding:17px;border-radius:18px;cursor:pointer;transition:transform .2s ease,border-color .2s ease;}
+.option:hover,.option:focus-visible{transform:translateY(-5px);border-color:rgba(255,79,143,.35);}
 .option.selected{
-
-    border-color:#ff5c99;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,80,145,.22),
-            rgba(255,255,255,.035)
-        );
-
-    box-shadow:
-
-        0 9px 0
-        rgba(84,20,50,.65),
-
-        0 18px 32px
-        rgba(255,67,136,.12);
+  border-color:#ff5c99;background:linear-gradient(150deg,rgba(255,80,145,.22),rgba(255,255,255,.035));
+  box-shadow:0 9px 0 rgba(84,20,50,.65), 0 18px 32px rgba(255,67,136,.12);
 }
+.option-icon{font-size:25px;margin-bottom:9px;filter:drop-shadow(0 5px 5px rgba(0,0,0,.25));}
+.option-title{font-size:12.5px;font-weight:700;color:var(--cream);}
+.option-small{font-size:10px;color:var(--muted-dim);margin-top:4px;line-height:1.4;font-style:italic;font-family:'Cormorant Garamond',serif;}
 
-
-.option-icon{
-
-    font-size:25px;
-
-    margin-bottom:9px;
-
-    filter:
-        drop-shadow(
-            0 5px 5px
-            rgba(0,0,0,.25)
-        );
-}
-
-
-.option-title{
-
-    font-size:12px;
-
-    font-weight:800;
-
-    color:#fff3f8;
-}
-
-
-.option-small{
-
-    font-size:9px;
-
-    color:#98788a;
-
-    margin-top:4px;
-
-    line-height:1.4;
-}
-
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    FINAL TICKET
-================================ */
-
+═══════════════════════════════════════════════════════════════ */
 .ticket{
-
-    width:100%;
-
-    display:grid;
-
-    grid-template-columns:
-        108px 1fr;
-
-    overflow:hidden;
-
-    border-radius:20px;
-
-    color:#33242c;
-
-    background:#fff2f7;
-
-    box-shadow:
-
-        0 13px 0
-        #b7597f,
-
-        0 25px 40px
-        rgba(0,0,0,.32),
-
-        inset 0 1px
-        rgba(255,255,255,.9);
-
-    transform:
-        perspective(900px)
-        rotateX(2deg);
-
-    margin-top:5px;
+  width:100%;display:grid;grid-template-columns:104px 1fr;overflow:hidden;border-radius:20px;color:#33242c;
+  background:#fff2f7;
+  box-shadow:0 13px 0 #b7597f, 0 25px 40px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.9);
+  transform:perspective(900px) rotateX(2deg);margin-top:4px;
 }
-
-
 .ticket-left{
-
-    padding:18px 10px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #ffd9e6,
-            #ffb8d1
-        );
-
-    border-right:
-        2px dashed
-        rgba(83,31,51,.18);
+  padding:18px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,#ffd9e6,#ffb8d1);border-right:2px dashed rgba(83,31,51,.18);
 }
+.ticket-bear{font-size:36px;}
+.admit{font-size:8.5px;font-weight:800;letter-spacing:1.2px;margin-top:9px;color:#7d2e4c;}
+.saved-stamp{margin-top:7px;padding:3px 8px;border:1px solid #cc4c7c;border-radius:4px;color:#c44876;font-size:8.5px;font-weight:800;transform:rotate(-7deg);}
+.ticket-right{padding:17px 15px;}
+.ticket-row{display:grid;grid-template-columns:48px 1fr;margin-bottom:8px;}
+.ticket-row span{color:#a07184;font-size:8px;font-weight:700;font-style:italic;font-family:'Cormorant Garamond',serif;}
+.ticket-row strong{color:#3f2d35;font-size:11px;line-height:1.3;}
 
+.countdown-label{margin-top:24px;color:var(--muted-dim);font-size:11px;font-style:italic;font-family:'Cormorant Garamond',serif;}
+.countdown{margin-top:5px;color:var(--rose-soft);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;letter-spacing:.5px;}
 
-.ticket-bear{
-
-    font-size:40px;
-}
-
-
-.admit{
-
-    font-size:8px;
-
-    font-weight:800;
-
-    letter-spacing:1.5px;
-
-    margin-top:9px;
-}
-
-
-.saved-stamp{
-
-    margin-top:7px;
-
-    padding:
-        3px 7px;
-
-    border:
-        1px solid
-        #cc4c7c;
-
-    border-radius:4px;
-
-    color:#c44876;
-
-    font-size:8px;
-
-    font-weight:800;
-
-    transform:
-        rotate(-7deg);
-}
-
-
-.ticket-right{
-
-    padding:
-        17px 15px;
-}
-
-
-.ticket-row{
-
-    display:grid;
-
-    grid-template-columns:
-        50px 1fr;
-
-    margin-bottom:8px;
-}
-
-
-.ticket-row span{
-
-    color:#a07184;
-
-    font-size:7px;
-
-    font-weight:800;
-
-    letter-spacing:.5px;
-}
-
-
-.ticket-row strong{
-
-    color:#3f2d35;
-
-    font-size:10px;
-
-    line-height:1.3;
-}
-
-
-/* ===============================
-   COUNTDOWN
-================================ */
-
-.countdown-label{
-
-    margin-top:26px;
-
-    color:#806576;
-
-    font-size:8px;
-
-    font-weight:700;
-
-    letter-spacing:2px;
-}
-
-
-.countdown{
-
-    margin-top:5px;
-
-    color:#ffc0d6;
-
-    font-family:monospace;
-
-    font-size:15px;
-
-    font-weight:700;
-}
-
-
-/* ===============================
-   FINAL ACTIONS
-================================ */
-
-.final-actions{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:9px;
-
-    margin-top:17px;
-}
-
-
+.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:18px;}
 .action-btn{
-
-    border:0;
-
-    border-radius:999px;
-
-    padding:
-        11px 15px;
-
-    cursor:pointer;
-
-    font-family:inherit;
-
-    font-size:9px;
-
-    font-weight:800;
-
-    transition:.18s;
+  border:0;border-radius:999px;padding:11px 16px;cursor:pointer;font-family:inherit;font-size:10px;font-weight:700;
+  transition:transform .18s ease;min-height:40px;
 }
+.action-btn:hover{transform:translateY(-2px);}
+.calendar-button{color:#174d30;background:linear-gradient(180deg,#baf5d0,#8be0ae);box-shadow:0 6px 0 #4d9c6d;}
+.share-button{color:#ffd1e1;background:linear-gradient(180deg,#59213f,#3b162d);border:1px solid rgba(255,99,155,.3);box-shadow:0 6px 0 #210b19;}
+.restart-button{color:#cbb0bf;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06);box-shadow:0 6px 0 rgba(0,0,0,.18);}
 
-
-.action-btn:hover{
-
-    transform:
-        translateY(-2px);
-}
-
-
-.calendar-button{
-
-    color:#174d30;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #baf5d0,
-            #8be0ae
-        );
-
-    box-shadow:
-
-        0 6px 0
-        #4d9c6d;
-}
-
-
-.share-button{
-
-    color:#ffd1e1;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #59213f,
-            #3b162d
-        );
-
-    border:
-        1px solid
-        rgba(255,99,155,.30);
-
-    box-shadow:
-
-        0 6px 0
-        #210b19;
-}
-
-
-.restart-button{
-
-    color:#cbb0bf;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
-    box-shadow:
-
-        0 6px 0
-        rgba(0,0,0,.18);
-}
-
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    TOAST
-================================ */
-
+═══════════════════════════════════════════════════════════════ */
 .toast{
+  position:absolute;left:50%;bottom:calc(23px + var(--sa-b));z-index:100;
+  transform:translateX(-50%) translateY(80px);opacity:0;white-space:nowrap;
+  background:#fff5f8;color:#6c3c53;padding:10px 18px;border-radius:999px;font-size:11px;font-weight:700;
+  box-shadow:0 15px 35px rgba(0,0,0,.34);transition:transform .3s ease,opacity .3s ease;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-    position:absolute;
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — phones, tablets, laptops, desktops
+═══════════════════════════════════════════════════════════════ */
 
-    left:50%;
-    bottom:23px;
-
-    z-index:100;
-
-    transform:
-
-        translateX(-50%)
-        translateY(80px);
-
-    opacity:0;
-
-    white-space:nowrap;
-
-    background:#fff5f8;
-
-    color:#6c3c53;
-
-    padding:
-        10px 17px;
-
-    border-radius:999px;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    box-shadow:
-
-        0 15px 35px
-        rgba(0,0,0,.34);
-
-    transition:.3s ease;
+/* small phones (iPhone SE and similar) */
+@media (max-width:380px){
+  .title{font-size:34px;}
+  .emoji-bears{font-size:62px;}
+  .options{gap:9px;}
+  .option{min-height:96px;padding:13px;}
+  .time-grid{gap:8px;}
+  .calendar-day{min-height:32px;font-size:11px;}
 }
 
-
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
+/* phones — edge to edge, safe-area aware */
+@media (max-width:520px){
+  body{padding:0;align-items:stretch;}
+  .app{width:100vw;width:100dvw;height:100svh;height:100dvh;min-height:600px;border-radius:0;border:none;}
+  .app::after{display:none;}
 }
 
-
-/* ===============================
-   MOBILE
-================================ */
-
-@media(max-width:520px){
-
-    body{
-
-        padding:0;
-
-        align-items:stretch;
-    }
-
-
-    .app{
-
-        width:100vw;
-
-        height:100dvh;
-
-        min-height:680px;
-
-        border-radius:0;
-    }
-
-
-    .screen{
-
-        padding-left:20px;
-
-        padding-right:20px;
-    }
-
-
-    .title{
-
-        font-size:43px;
-    }
-
-
-    .calendar-wrap{
-
-        padding:14px;
-    }
-
-
-    .calendar-day{
-
-        min-height:33px;
-    }
+/* landscape phones (short viewport) */
+@media (max-height:640px) and (orientation:landscape){
+  .screen{padding-top:calc(30px + var(--sa-t));}
+  .character{min-height:0;}
+  .character::before{display:none;}
+  .emoji-bears{font-size:44px;}
+  .title{font-size:28px;margin-bottom:8px;}
+  .subtitle{margin-bottom:14px;}
+  .and-around{margin:8px 0;}
 }
 
-
-@media(max-height:750px){
-
-    .character{
-
-        min-height:100px;
-    }
-
-
-    .emoji-bears{
-
-        font-size:60px;
-    }
-
-
-    .title{
-
-        font-size:39px;
-    }
-
-
-    .screen{
-
-        padding-top:58px;
-    }
+/* tablets — a little breathing room around the card */
+@media (min-width:700px){
+  .app{width:min(88vw,480px);}
 }
 
+/* laptops / desktops — give the scene some atmosphere */
+@media (min-width:1024px){
+  body::before{
+    content:'Cherissa';
+    position:fixed;z-index:0;font-family:'Great Vibes',cursive;font-size:min(22vw,340px);
+    color:rgba(255,79,143,.05);white-space:nowrap;pointer-events:none;
+    top:50%;left:50%;transform:translate(-50%,-52%);
+  }
+  .app{width:440px;}
+}
 </style>
 </head>
-
-
 <body>
 
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 
-
 <div class="app">
 
+<div class="progress"><span id="p1"></span><span id="p2"></span><span id="p3"></span><span id="p4"></span></div>
 
-<!-- PROGRESS -->
+<!-- SCREEN 1 — the ask -->
+<section class="screen active" id="screen1">
+  <div class="character"><div class="emoji-bears">🐻💞🐻</div></div>
+  <h1 class="title script">Will you go out with me, Cherissa?</h1>
+  <p class="subtitle">I made this little page just for you. There is only one right answer... 💗</p>
+  <div class="answer-row">
+    <button class="btn btn-pink" onclick="nextScreen(2)">Yes! 💕</button>
+    <button class="btn no-btn" id="noBtn" onmouseenter="runAway()" onclick="runAway()">No</button>
+  </div>
+</section>
 
-<div class="progress">
+<!-- SCREEN 2 — date & time -->
+<section class="screen scrollable" id="screen2">
+  <div class="back" onclick="nextScreen(1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')nextScreen(1)">← back</div>
+  <div style="height:15px"></div>
+  <div class="character" style="min-height:88px"><div class="emoji-bears" style="font-size:56px">💗🐻</div></div>
+  <h1 class="title script" style="font-size:clamp(32px,8vw,40px)">Yay! Pick our date</h1>
+  <p class="subtitle" style="margin-bottom:6px">Choose any day in 2026.</p>
 
-    <span id="p1"></span>
+  <div class="calendar-wrap card3d">
+    <div class="calendar-top">
+      <button class="cal-nav" id="prevMonth" onclick="changeMonth(-1)" aria-label="Previous month">‹</button>
+      <div class="calendar-heading">
+        <small>choose a day</small>
+        <strong id="calendarTitle">September 2026</strong>
+      </div>
+      <button class="cal-nav" id="nextMonth" onclick="changeMonth(1)" aria-label="Next month">›</button>
+    </div>
+    <div class="month-strip" id="monthStrip"></div>
+    <div class="weekdays"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="selected-date" id="selectedDateText">Tap any day you like 💗</div>
+  </div>
 
-    <span id="p2"></span>
+  <div class="and-around">and around...</div>
 
-    <span id="p3"></span>
+  <div class="time-grid">
+    <div class="time-choice" role="button" tabindex="0" onclick="selectTime(this,'10:30 AM','10:30')" onkeydown="if(event.key==='Enter')selectTime(this,'10:30 AM','10:30')"><strong>Morning</strong><br>10:30 AM</div>
+    <div class="time-choice" role="button" tabindex="0" onclick="selectTime(this,'2:00 PM','14:00')" onkeydown="if(event.key==='Enter')selectTime(this,'2:00 PM','14:00')"><strong>Afternoon</strong><br>2:00 PM</div>
+    <div class="time-choice" role="button" tabindex="0" onclick="selectTime(this,'7:00 PM','19:00')" onkeydown="if(event.key==='Enter')selectTime(this,'7:00 PM','19:00')"><strong>Evening</strong><br>7:00 PM</div>
+    <div class="time-choice" role="button" tabindex="0" onclick="selectTime(this,'10:30 PM','22:30')" onkeydown="if(event.key==='Enter')selectTime(this,'10:30 PM','22:30')"><strong>Late night</strong><br>10:30 PM</div>
+  </div>
+  <div style="height:35px"></div>
+</section>
 
-    <span id="p4"></span>
+<!-- SCREEN 3 — the plan -->
+<section class="screen" id="screen3">
+  <div class="back" onclick="nextScreen(2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')nextScreen(2)">← back</div>
+  <div class="character"><div class="emoji-bears">🐻🤝🐻</div></div>
+  <h1 class="title script">And then?</h1>
+  <p class="subtitle">Pick what sounds nicest to you.</p>
+  <div class="options">
+    <div class="option card3d" role="button" tabindex="0" onclick="selectPlace(this,'Dessert')" onkeydown="if(event.key==='Enter')selectPlace(this,'Dessert')">
+      <div class="option-icon">🍰</div><div class="option-title">Dessert</div><div class="option-small">something sweet for us</div>
+    </div>
+    <div class="option card3d" role="button" tabindex="0" onclick="selectPlace(this,'Stargazing')" onkeydown="if(event.key==='Enter')selectPlace(this,'Stargazing')">
+      <div class="option-icon">✨</div><div class="option-title">Stargazing</div><div class="option-small">quiet sky, just us</div>
+    </div>
+    <div class="option card3d" role="button" tabindex="0" onclick="selectPlace(this,'A drive')" onkeydown="if(event.key==='Enter')selectPlace(this,'A drive')">
+      <div class="option-icon">🚗</div><div class="option-title">A drive</div><div class="option-small">music on, windows down</div>
+    </div>
+    <div class="option card3d" role="button" tabindex="0" onclick="selectPlace(this,'A surprise')" onkeydown="if(event.key==='Enter')selectPlace(this,'A surprise')">
+      <div class="option-icon">🎁</div><div class="option-title">A surprise</div><div class="option-small">let me plan something cute</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 4 — what to bring -->
+<section class="screen" id="screen4">
+  <div class="back" onclick="nextScreen(3)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')nextScreen(3)">← back</div>
+  <div class="character"><div class="emoji-bears">🐻🌷</div></div>
+  <h1 class="title script">What should I bring?</h1>
+  <p class="subtitle">Your choice. I will remember it.</p>
+  <div class="options">
+    <div class="option card3d" role="button" tabindex="0" onclick="selectBring(this,'Flowers')" onkeydown="if(event.key==='Enter')selectBring(this,'Flowers')">
+      <div class="option-icon">🌷</div><div class="option-title">Flowers</div><div class="option-small">classic and beautiful</div>
+    </div>
+    <div class="option card3d" role="button" tabindex="0" onclick="selectBring(this,'Something sweet')" onkeydown="if(event.key==='Enter')selectBring(this,'Something sweet')">
+      <div class="option-icon">🧁</div><div class="option-title">Something sweet</div><div class="option-small">a little treat for us</div>
+    </div>
+    <div class="option card3d" role="button" tabindex="0" onclick="selectBring(this,'A playlist')" onkeydown="if(event.key==='Enter')selectBring(this,'A playlist')">
+      <div class="option-icon">🎵</div><div class="option-title">A playlist</div><div class="option-small">songs for our moment</div>
+    </div>
+    <div class="option card3d" role="button" tabindex="0" onclick="selectBring(this,'Just me')" onkeydown="if(event.key==='Enter')selectBring(this,'Just me')">
+      <div class="option-icon">💗</div><div class="option-title">Just me</div><div class="option-small">fair enough 😌</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 5 — the ticket -->
+<section class="screen" id="screen5">
+  <div class="character" style="min-height:100px"><div class="emoji-bears" style="font-size:58px">🐻💗🐻</div></div>
+  <h1 class="title script" style="font-size:clamp(36px,9vw,44px)">It's a date!</h1>
+
+  <div class="ticket">
+    <div class="ticket-left">
+      <div class="ticket-bear">🎟️💗</div>
+      <div class="admit">ADMIT TWO</div>
+      <div class="saved-stamp">SAVED</div>
+    </div>
+    <div class="ticket-right">
+      <div class="ticket-row"><span>when</span><strong id="finalDate">Choose a date</strong></div>
+      <div class="ticket-row"><span>time</span><strong id="finalTime">Choose a time</strong></div>
+      <div class="ticket-row"><span>plan</span><strong id="finalPlace">Dessert</strong></div>
+      <div class="ticket-row"><span>bring</span><strong id="finalBring">Flowers</strong></div>
+      <div class="ticket-row"><span>for</span><strong>Sabin &amp; Cherissa 💗</strong></div>
+    </div>
+  </div>
+
+  <div class="countdown-label">starts in</div>
+  <div class="countdown" id="countdown">Choose a date first 💗</div>
+
+  <div class="final-actions">
+    <button class="action-btn calendar-button" onclick="downloadCalendarEvent()">＋ Add to calendar</button>
+    <button class="action-btn share-button" onclick="shareDate()">Share 💌</button>
+    <button class="action-btn restart-button" onclick="restartExperience()">Start again</button>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Saved 💗</div>
 
 </div>
-
-
-
-<!-- ==================================
-     SCREEN 1
-================================== -->
-
-<section
-class="screen active"
-id="screen1">
-
-
-    <div class="character">
-
-        <div class="emoji-bears">
-
-            🐻💞🐻
-
-        </div>
-
-    </div>
-
-
-    <h1 class="title">
-
-        Will you go out with me, Cherissa?
-
-    </h1>
-
-
-    <p class="subtitle">
-
-        I made this little page just for you.
-        <br>
-        There is only one right answer... 💗
-
-    </p>
-
-
-    <div class="answer-row">
-
-
-        <button
-        class="btn btn-pink"
-        onclick="nextScreen(2)">
-
-            Yes! 💕
-
-        </button>
-
-
-        <button
-        class="btn no-btn"
-        id="noBtn"
-        onmouseenter="runAway()"
-        onclick="runAway()">
-
-            No
-
-        </button>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ==================================
-     SCREEN 2
-     FULL YEAR CALENDAR
-================================== -->
-
-<section
-class="screen scrollable"
-id="screen2">
-
-
-    <div
-    class="back"
-    onclick="nextScreen(1)">
-
-        ← back
-
-    </div>
-
-
-    <div style="height:15px"></div>
-
-
-    <div
-    class="character"
-    style="min-height:90px">
-
-
-        <div
-        class="emoji-bears"
-        style="font-size:58px">
-
-            💗🐻
-
-        </div>
-
-
-    </div>
-
-
-    <h1
-    class="title"
-    style="font-size:40px">
-
-        Yay! Pick our date
-
-    </h1>
-
-
-    <p
-    class="subtitle"
-    style="margin-bottom:6px">
-
-        Choose any day in 2026.
-
-    </p>
-
-
-
-    <!-- CALENDAR -->
-
-    <div
-    class="calendar-wrap card3d">
-
-
-        <div class="calendar-top">
-
-
-            <button
-            class="cal-nav"
-            id="prevMonth"
-            onclick="changeMonth(-1)">
-
-                ‹
-
-            </button>
-
-
-
-            <div class="calendar-heading">
-
-
-                <small>
-
-                    CHOOSE A DAY
-
-                </small>
-
-
-                <strong
-                id="calendarTitle">
-
-                    September 2026
-
-                </strong>
-
-
-            </div>
-
-
-
-            <button
-            class="cal-nav"
-            id="nextMonth"
-            onclick="changeMonth(1)">
-
-                ›
-
-            </button>
-
-
-        </div>
-
-
-
-        <!-- JAN TO DEC -->
-
-        <div
-        class="month-strip"
-        id="monthStrip">
-
-        </div>
-
-
-
-        <!-- WEEK DAYS -->
-
-        <div class="weekdays">
-
-            <span>MON</span>
-
-            <span>TUE</span>
-
-            <span>WED</span>
-
-            <span>THU</span>
-
-            <span>FRI</span>
-
-            <span>SAT</span>
-
-            <span>SUN</span>
-
-        </div>
-
-
-
-        <!-- DAYS -->
-
-        <div
-        class="calendar-grid"
-        id="calendarGrid">
-
-        </div>
-
-
-
-        <div
-        class="selected-date"
-        id="selectedDateText">
-
-            Tap any day you like 💗
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="and-around">
-
-        and around...
-
-    </div>
-
-
-
-    <!-- TIME -->
-
-    <div class="time-grid">
-
-
-        <div
-        class="time-choice"
-        onclick="
-        selectTime(
-            this,
-            '10:30 AM',
-            '10:30'
-        )">
-
-            <strong>
-                Morning
-            </strong>
-
-            <br>
-
-            10:30 AM
-
-        </div>
-
-
-
-        <div
-        class="time-choice"
-        onclick="
-        selectTime(
-            this,
-            '2:00 PM',
-            '14:00'
-        )">
-
-            <strong>
-                Afternoon
-            </strong>
-
-            <br>
-
-            2:00 PM
-
-        </div>
-
-
-
-        <div
-        class="time-choice"
-        onclick="
-        selectTime(
-            this,
-            '7:00 PM',
-            '19:00'
-        )">
-
-            <strong>
-                Evening
-            </strong>
-
-            <br>
-
-            7:00 PM
-
-        </div>
-
-
-
-        <div
-        class="time-choice"
-        onclick="
-        selectTime(
-            this,
-            '10:30 PM',
-            '22:30'
-        )">
-
-            <strong>
-                Late night
-            </strong>
-
-            <br>
-
-            10:30 PM
-
-        </div>
-
-
-    </div>
-
-
-    <div style="height:35px"></div>
-
-
-</section>
-
-
-
-<!-- ==================================
-     SCREEN 3
-================================== -->
-
-<section
-class="screen"
-id="screen3">
-
-
-    <div
-    class="back"
-    onclick="nextScreen(2)">
-
-        ← back
-
-    </div>
-
-
-    <div class="character">
-
-
-        <div class="emoji-bears">
-
-            🐻🤝🐻
-
-        </div>
-
-
-    </div>
-
-
-    <h1 class="title">
-
-        And then?
-
-    </h1>
-
-
-    <p class="subtitle">
-
-        Pick what sounds nicest to you.
-
-    </p>
-
-
-
-    <div class="options">
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectPlace(
-            this,
-            'Dessert'
-        )">
-
-
-            <div class="option-icon">
-
-                🍰
-
-            </div>
-
-
-            <div class="option-title">
-
-                Dessert
-
-            </div>
-
-
-            <div class="option-small">
-
-                something sweet for us
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectPlace(
-            this,
-            'Stargazing'
-        )">
-
-
-            <div class="option-icon">
-
-                ✨
-
-            </div>
-
-
-            <div class="option-title">
-
-                Stargazing
-
-            </div>
-
-
-            <div class="option-small">
-
-                quiet sky, just us
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectPlace(
-            this,
-            'A drive'
-        )">
-
-
-            <div class="option-icon">
-
-                🚗
-
-            </div>
-
-
-            <div class="option-title">
-
-                A drive
-
-            </div>
-
-
-            <div class="option-small">
-
-                music on, windows down
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectPlace(
-            this,
-            'A surprise'
-        )">
-
-
-            <div class="option-icon">
-
-                🎁
-
-            </div>
-
-
-            <div class="option-title">
-
-                A surprise
-
-            </div>
-
-
-            <div class="option-small">
-
-                let me plan something cute
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ==================================
-     SCREEN 4
-================================== -->
-
-<section
-class="screen"
-id="screen4">
-
-
-    <div
-    class="back"
-    onclick="nextScreen(3)">
-
-        ← back
-
-    </div>
-
-
-    <div class="character">
-
-
-        <div class="emoji-bears">
-
-            🐻🌷
-
-        </div>
-
-
-    </div>
-
-
-    <h1 class="title">
-
-        What should I bring?
-
-    </h1>
-
-
-    <p class="subtitle">
-
-        Your choice. I will remember it.
-
-    </p>
-
-
-
-    <div class="options">
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectBring(
-            this,
-            'Flowers'
-        )">
-
-
-            <div class="option-icon">
-
-                🌷
-
-            </div>
-
-
-            <div class="option-title">
-
-                Flowers
-
-            </div>
-
-
-            <div class="option-small">
-
-                classic and beautiful
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectBring(
-            this,
-            'Something sweet'
-        )">
-
-
-            <div class="option-icon">
-
-                🧁
-
-            </div>
-
-
-            <div class="option-title">
-
-                Something sweet
-
-            </div>
-
-
-            <div class="option-small">
-
-                a little treat for us
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectBring(
-            this,
-            'A playlist'
-        )">
-
-
-            <div class="option-icon">
-
-                🎵
-
-            </div>
-
-
-            <div class="option-title">
-
-                A playlist
-
-            </div>
-
-
-            <div class="option-small">
-
-                songs for our moment
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-        class="option card3d"
-        onclick="
-        selectBring(
-            this,
-            'Just me'
-        )">
-
-
-            <div class="option-icon">
-
-                💗
-
-            </div>
-
-
-            <div class="option-title">
-
-                Just me
-
-            </div>
-
-
-            <div class="option-small">
-
-                fair enough 😌
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ==================================
-     FINAL SCREEN
-================================== -->
-
-<section
-class="screen"
-id="screen5">
-
-
-    <div
-    class="character"
-    style="min-height:105px">
-
-
-        <div
-        class="emoji-bears"
-        style="font-size:62px">
-
-            🐻💗🐻
-
-        </div>
-
-
-    </div>
-
-
-    <h1
-    class="title"
-    style="font-size:44px">
-
-        It's a date!
-
-    </h1>
-
-
-
-    <div class="ticket">
-
-
-        <div class="ticket-left">
-
-
-            <div class="ticket-bear">
-
-                🎟️💗
-
-            </div>
-
-
-            <div class="admit">
-
-                ADMIT TWO
-
-            </div>
-
-
-            <div class="saved-stamp">
-
-                SAVED
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="ticket-right">
-
-
-            <div class="ticket-row">
-
-                <span>
-                    WHEN
-                </span>
-
-                <strong
-                id="finalDate">
-
-                    Choose a date
-
-                </strong>
-
-            </div>
-
-
-
-            <div class="ticket-row">
-
-                <span>
-                    TIME
-                </span>
-
-                <strong
-                id="finalTime">
-
-                    Choose a time
-
-                </strong>
-
-            </div>
-
-
-
-            <div class="ticket-row">
-
-                <span>
-                    PLAN
-                </span>
-
-                <strong
-                id="finalPlace">
-
-                    Dessert
-
-                </strong>
-
-            </div>
-
-
-
-            <div class="ticket-row">
-
-                <span>
-                    BRING
-                </span>
-
-                <strong
-                id="finalBring">
-
-                    Flowers
-
-                </strong>
-
-            </div>
-
-
-
-            <div class="ticket-row">
-
-                <span>
-                    FOR
-                </span>
-
-                <strong>
-
-                    Sabin & Cherissa 💗
-
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="countdown-label">
-
-        STARTS IN
-
-    </div>
-
-
-    <div
-    class="countdown"
-    id="countdown">
-
-        Choose a date first 💗
-
-    </div>
-
-
-
-    <div class="final-actions">
-
-
-        <button
-        class="action-btn calendar-button"
-        onclick="
-        downloadCalendarEvent()
-        ">
-
-            ＋ Add to calendar
-
-        </button>
-
-
-
-        <button
-        class="action-btn share-button"
-        onclick="
-        shareDate()
-        ">
-
-            Share 💌
-
-        </button>
-
-
-
-        <button
-        class="action-btn restart-button"
-        onclick="
-        restartExperience()
-        ">
-
-            Start again
-
-        </button>
-
-
-    </div>
-
-
-</section>
-
-
-
-<div
-class="toast"
-id="toast">
-
-    Saved 💗
-
-</div>
-
-
-</div>
-
-
 
 <script>
-
-/* ===============================
-   CALENDAR CONFIGURATION
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════════════ */
 const CALENDAR_YEAR = 2026;
-
-
-const months = [
-
-    "January",
-
-    "February",
-
-    "March",
-
-    "April",
-
-    "May",
-
-    "June",
-
-    "July",
-
-    "August",
-
-    "September",
-
-    "October",
-
-    "November",
-
-    "December"
-
-];
-
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 let currentScreen = 1;
-
-
 let viewingMonth = (() => {
-
-    const today =
-        new Date();
-
-
-    if(
-        today.getFullYear()
-        ===
-        CALENDAR_YEAR
-    ){
-
-        return today.getMonth();
-
-    }
-
-
-    return 0;
-
+  const today = new Date();
+  return today.getFullYear() === CALENDAR_YEAR ? today.getMonth() : 0;
 })();
 
-
-
-let dateData = {
-
-    dateISO:"",
-
-    date:"",
-
-    time:"",
-
-    time24:"",
-
-    place:"Dessert",
-
-    bring:"Flowers"
-
-};
-
-
+let dateData = { dateISO:"", date:"", time:"", time24:"", place:"Dessert", bring:"Flowers" };
 let countdownTimer = null;
 
-
-
-/* ===============================
-   PAGE NAVIGATION
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════════ */
 function nextScreen(number){
-
-
-    if(number === 3){
-
-
-        if(!dateData.dateISO){
-
-            showToast(
-                "Choose a date first 💗"
-            );
-
-            return;
-        }
-
-
-        if(!dateData.time){
-
-            showToast(
-                "Choose the time too 💗"
-            );
-
-            return;
-        }
-
+  if(number === 3){
+    if(!dateData.dateISO){ showToast("Choose a date first 💗"); return; }
+    if(!dateData.time){ showToast("Choose the time too 💗"); return; }
+  }
+  const current = document.querySelector(".screen.active");
+  if(current) current.classList.remove("active");
+  setTimeout(() => {
+    const next = document.getElementById("screen" + number);
+    if(next){
+      next.classList.add("active");
+      if(next.classList.contains("scrollable")) next.scrollTop = 0;
     }
-
-
-
-    const current =
-
-        document.querySelector(
-            ".screen.active"
-        );
-
-
-    if(current){
-
-        current.classList.remove(
-            "active"
-        );
-
-    }
-
-
-
-    setTimeout(() => {
-
-
-        const next =
-
-            document.getElementById(
-                "screen" + number
-            );
-
-
-        if(next){
-
-            next.classList.add(
-                "active"
-            );
-
-
-            if(
-                next.classList.contains(
-                    "scrollable"
-                )
-            ){
-
-                next.scrollTop = 0;
-
-            }
-
-        }
-
-
-    },120);
-
-
-
-    currentScreen = number;
-
-
-    updateProgress();
-
-
-
-    if(number === 5){
-
-        updateTicket();
-
-        startCountdown();
-
-        showToast(
-            "Perfect. It's a date 💗"
-        );
-
-    }
-
+  }, 120);
+  currentScreen = number;
+  updateProgress();
+  if(number === 5){
+    updateTicket();
+    startCountdown();
+    showToast("Perfect. It's a date 💗");
+  }
 }
-
-
-
-/* ===============================
-   PROGRESS
-================================ */
 
 function updateProgress(){
-
-
-    const progressNumber =
-
-        Math.min(
-            currentScreen,
-            4
-        );
-
-
-    for(
-        let i=1;
-        i<=4;
-        i++
-    ){
-
-
-        const bar =
-
-            document.getElementById(
-                "p" + i
-            );
-
-
-        if(
-            i <=
-            progressNumber
-        ){
-
-            bar.classList.add(
-                "active"
-            );
-
-        }
-
-        else{
-
-            bar.classList.remove(
-                "active"
-            );
-
-        }
-
-    }
-
+  const progressNumber = Math.min(currentScreen, 4);
+  for(let i=1;i<=4;i++){
+    const bar = document.getElementById("p"+i);
+    bar.classList.toggle("active", i <= progressNumber);
+  }
 }
-
-
 updateProgress();
 
-
-
-/* ===============================
-   NO BUTTON
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   NO BUTTON — runs away, then gives in
+═══════════════════════════════════════════════════════════════ */
 let noCount = 0;
-
-
 function runAway(){
-
-
-    const button =
-
-        document.getElementById(
-            "noBtn"
-        );
-
-
-    noCount++;
-
-
-
-    const x =
-
-        Math.random()
-        *
-        150
-        -
-        75;
-
-
-    const y =
-
-        Math.random()
-        *
-        95
-        -
-        47;
-
-
-
-    button.style.transform =
-
-        `translate(
-            ${x}px,
-            ${y}px
-        )`;
-
-
-
-    if(noCount === 1){
-
-        button.innerText =
-            "Think again 😌";
-
-    }
-
-
-    else if(noCount === 2){
-
-        button.innerText =
-            "Are you sure? 🥺";
-
-    }
-
-
-    else if(noCount === 3){
-
-        button.innerText =
-            "Wrong answer 😭";
-
-    }
-
-
-    else{
-
-        button.innerText =
-            "Okay... YES 💗";
-
-
-        button.onmouseenter = null;
-
-
-        button.onclick =
-            function(){
-
-                nextScreen(2);
-
-            };
-
-    }
-
+  const button = document.getElementById("noBtn");
+  noCount++;
+  const x = Math.random()*150-75;
+  const y = Math.random()*95-47;
+  button.style.transform = `translate(${x}px,${y}px)`;
+  if(noCount === 1) button.innerText = "Think again 😌";
+  else if(noCount === 2) button.innerText = "Are you sure? 🥺";
+  else if(noCount === 3) button.innerText = "Wrong answer 😭";
+  else{
+    button.innerText = "Okay... YES 💗";
+    button.onmouseenter = null;
+    button.onclick = function(){ nextScreen(2); };
+  }
 }
 
-
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    MONTH STRIP
-================================ */
-
+═══════════════════════════════════════════════════════════════ */
 function buildMonthStrip(){
-
-
-    const container =
-
-        document.getElementById(
-            "monthStrip"
-        );
-
-
-    container.innerHTML = "";
-
-
-
-    months.forEach(
-        function(
-            month,
-            index
-        ){
-
-
-            const chip =
-
-                document.createElement(
-                    "button"
-                );
-
-
-            chip.className =
-                "month-chip";
-
-
-            if(
-                index ===
-                viewingMonth
-            ){
-
-                chip.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            chip.innerText =
-
-                month.substring(
-                    0,
-                    3
-                );
-
-
-            chip.onclick =
-                function(){
-
-
-                    viewingMonth =
-                        index;
-
-
-                    renderCalendar();
-
-                };
-
-
-            container.appendChild(
-                chip
-            );
-
-        }
-    );
-
-
-
-    setTimeout(() => {
-
-
-        const active =
-
-            container.querySelector(
-                ".month-chip.active"
-            );
-
-
-        if(active){
-
-            active.scrollIntoView({
-
-                behavior:"smooth",
-
-                inline:"center",
-
-                block:"nearest"
-
-            });
-
-        }
-
-
-    },30);
-
+  const container = document.getElementById("monthStrip");
+  container.innerHTML = "";
+  months.forEach((month, index) => {
+    const chip = document.createElement("button");
+    chip.className = "month-chip" + (index === viewingMonth ? " active" : "");
+    chip.innerText = month.substring(0,3);
+    chip.onclick = () => { viewingMonth = index; renderCalendar(); };
+    container.appendChild(chip);
+  });
+  setTimeout(() => {
+    const active = container.querySelector(".month-chip.active");
+    if(active) active.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
+  }, 30);
 }
 
-
-
-/* ===============================
-   BUILD CALENDAR
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   CALENDAR
+═══════════════════════════════════════════════════════════════ */
 function renderCalendar(){
+  const grid = document.getElementById("calendarGrid");
+  const title = document.getElementById("calendarTitle");
+  grid.innerHTML = "";
+  title.innerText = months[viewingMonth] + " " + CALENDAR_YEAR;
+  buildMonthStrip();
 
+  const firstDay = new Date(CALENDAR_YEAR, viewingMonth, 1);
+  const startOffset = (firstDay.getDay() + 6) % 7; // Monday = 0
+  const daysInMonth = new Date(CALENDAR_YEAR, viewingMonth+1, 0).getDate();
 
-    const grid =
+  for(let i=0;i<startOffset;i++){
+    const empty = document.createElement("button");
+    empty.className = "calendar-day empty";
+    empty.disabled = true;
+    grid.appendChild(empty);
+  }
 
-        document.getElementById(
-            "calendarGrid"
-        );
+  const today = new Date();
+  for(let day=1; day<=daysInMonth; day++){
+    const button = document.createElement("button");
+    button.className = "calendar-day";
+    button.innerText = day;
+    const monthNumber = String(viewingMonth+1).padStart(2,"0");
+    const dayNumber = String(day).padStart(2,"0");
+    const iso = `${CALENDAR_YEAR}-${monthNumber}-${dayNumber}`;
 
-
-    const title =
-
-        document.getElementById(
-            "calendarTitle"
-        );
-
-
-    grid.innerHTML = "";
-
-
-    title.innerText =
-
-        months[viewingMonth]
-        +
-        " "
-        +
-        CALENDAR_YEAR;
-
-
-
-    buildMonthStrip();
-
-
-
-    const firstDay =
-
-        new Date(
-
-            CALENDAR_YEAR,
-
-            viewingMonth,
-
-            1
-
-        );
-
-
-
-    /*
-       Javascript:
-       Sunday = 0
-
-       We want:
-       Monday = 0
-    */
-
-    const startOffset =
-
-        (
-            firstDay.getDay()
-            +
-            6
-        )
-        %
-        7;
-
-
-
-    const daysInMonth =
-
-        new Date(
-
-            CALENDAR_YEAR,
-
-            viewingMonth + 1,
-
-            0
-
-        ).getDate();
-
-
-
-    for(
-        let i=0;
-        i<startOffset;
-        i++
-    ){
-
-
-        const empty =
-
-            document.createElement(
-                "button"
-            );
-
-
-        empty.className =
-            "calendar-day empty";
-
-
-        empty.disabled = true;
-
-
-        grid.appendChild(
-            empty
-        );
-
+    if(today.getFullYear()===CALENDAR_YEAR && today.getMonth()===viewingMonth && today.getDate()===day){
+      button.classList.add("today");
     }
+    if(dateData.dateISO === iso) button.classList.add("selected");
+    button.onclick = () => chooseDate(day);
+    grid.appendChild(button);
+  }
 
-
-
-    const today =
-        new Date();
-
-
-
-    for(
-        let day=1;
-        day<=daysInMonth;
-        day++
-    ){
-
-
-        const button =
-
-            document.createElement(
-                "button"
-            );
-
-
-        button.className =
-            "calendar-day";
-
-
-        button.innerText =
-            day;
-
-
-
-        const monthNumber =
-
-            String(
-                viewingMonth + 1
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const dayNumber =
-
-            String(
-                day
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const iso =
-
-            CALENDAR_YEAR
-            +
-            "-"
-            +
-            monthNumber
-            +
-            "-"
-            +
-            dayNumber;
-
-
-
-        if(
-
-            today.getFullYear()
-            ===
-            CALENDAR_YEAR
-
-            &&
-
-            today.getMonth()
-            ===
-            viewingMonth
-
-            &&
-
-            today.getDate()
-            ===
-            day
-
-        ){
-
-            button.classList.add(
-                "today"
-            );
-
-        }
-
-
-
-        if(
-            dateData.dateISO
-            ===
-            iso
-        ){
-
-            button.classList.add(
-                "selected"
-            );
-
-        }
-
-
-
-        button.onclick =
-            function(){
-
-                chooseDate(
-                    day
-                );
-
-            };
-
-
-        grid.appendChild(
-            button
-        );
-
-    }
-
-
-
-    document
-        .getElementById(
-            "prevMonth"
-        )
-        .disabled =
-            viewingMonth === 0;
-
-
-
-    document
-        .getElementById(
-            "nextMonth"
-        )
-        .disabled =
-            viewingMonth === 11;
-
+  document.getElementById("prevMonth").disabled = viewingMonth === 0;
+  document.getElementById("nextMonth").disabled = viewingMonth === 11;
 }
-
-
-
-/* ===============================
-   CHANGE MONTH
-================================ */
 
 function changeMonth(direction){
-
-
-    const newMonth =
-
-        viewingMonth
-        +
-        direction;
-
-
-
-    if(
-        newMonth < 0
-        ||
-        newMonth > 11
-    ){
-
-        return;
-
-    }
-
-
-
-    viewingMonth =
-        newMonth;
-
-
-    renderCalendar();
-
+  const newMonth = viewingMonth + direction;
+  if(newMonth < 0 || newMonth > 11) return;
+  viewingMonth = newMonth;
+  renderCalendar();
 }
-
-
-
-/* ===============================
-   CHOOSE DATE
-================================ */
 
 function chooseDate(day){
-
-
-    const selectedDate =
-
-        new Date(
-
-            CALENDAR_YEAR,
-
-            viewingMonth,
-
-            day
-
-        );
-
-
-
-    const monthNumber =
-
-        String(
-            viewingMonth + 1
-        )
-        .padStart(
-            2,
-            "0"
-        );
-
-
-    const dayNumber =
-
-        String(day)
-        .padStart(
-            2,
-            "0"
-        );
-
-
-
-    dateData.dateISO =
-
-        CALENDAR_YEAR
-        +
-        "-"
-        +
-        monthNumber
-        +
-        "-"
-        +
-        dayNumber;
-
-
-
-    dateData.date =
-
-        selectedDate
-        .toLocaleDateString(
-
-            "en-US",
-
-            {
-
-                weekday:"long",
-
-                month:"long",
-
-                day:"numeric",
-
-                year:"numeric"
-
-            }
-
-        );
-
-
-
-    document
-        .getElementById(
-            "selectedDateText"
-        )
-        .innerText =
-
-            "Selected: "
-            +
-            dateData.date
-            +
-            " 💗";
-
-
-
-    renderCalendar();
-
-
-
-    showToast(
-        "Date selected 💗"
-    );
-
+  const selectedDate = new Date(CALENDAR_YEAR, viewingMonth, day);
+  const monthNumber = String(viewingMonth+1).padStart(2,"0");
+  const dayNumber = String(day).padStart(2,"0");
+  dateData.dateISO = `${CALENDAR_YEAR}-${monthNumber}-${dayNumber}`;
+  dateData.date = selectedDate.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
+  document.getElementById("selectedDateText").innerText = "Selected: " + dateData.date + " 💗";
+  renderCalendar();
+  showToast("Date selected 💗");
 }
 
-
-
-/* ===============================
-   TIME
-================================ */
-
-function selectTime(
-    element,
-    label,
-    time24
-){
-
-
-    document
-        .querySelectorAll(
-            ".time-choice"
-        )
-        .forEach(
-            function(item){
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-    element.classList.add(
-        "selected"
-    );
-
-
-    dateData.time =
-        label;
-
-
-    dateData.time24 =
-        time24;
-
-
-
-    if(!dateData.dateISO){
-
-        showToast(
-            "Choose a date first 💗"
-        );
-
-        return;
-
-    }
-
-
-
-    setTimeout(
-        function(){
-
-            nextScreen(3);
-
-        },
-        330
-    );
-
+/* ═══════════════════════════════════════════════════════════════
+   TIME / PLAN / BRING
+═══════════════════════════════════════════════════════════════ */
+function selectTime(element, label, time24){
+  document.querySelectorAll(".time-choice").forEach(item => item.classList.remove("selected"));
+  element.classList.add("selected");
+  dateData.time = label;
+  dateData.time24 = time24;
+  if(!dateData.dateISO){ showToast("Choose a date first 💗"); return; }
+  setTimeout(() => nextScreen(3), 330);
 }
 
-
-
-/* ===============================
-   SELECT PLAN
-================================ */
-
-function selectPlace(
-    element,
-    value
-){
-
-
-    document
-        .querySelectorAll(
-            "#screen3 .option"
-        )
-        .forEach(
-            function(item){
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-    element.classList.add(
-        "selected"
-    );
-
-
-    dateData.place =
-        value;
-
-
-
-    setTimeout(
-        function(){
-
-            nextScreen(4);
-
-        },
-        320
-    );
-
+function selectPlace(element, value){
+  document.querySelectorAll("#screen3 .option").forEach(item => item.classList.remove("selected"));
+  element.classList.add("selected");
+  dateData.place = value;
+  setTimeout(() => nextScreen(4), 320);
 }
 
-
-
-/* ===============================
-   SELECT WHAT TO BRING
-================================ */
-
-function selectBring(
-    element,
-    value
-){
-
-
-    document
-        .querySelectorAll(
-            "#screen4 .option"
-        )
-        .forEach(
-            function(item){
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-    element.classList.add(
-        "selected"
-    );
-
-
-    dateData.bring =
-        value;
-
-
-
-    setTimeout(
-        function(){
-
-            nextScreen(5);
-
-        },
-        350
-    );
-
+function selectBring(element, value){
+  document.querySelectorAll("#screen4 .option").forEach(item => item.classList.remove("selected"));
+  element.classList.add("selected");
+  dateData.bring = value;
+  setTimeout(() => nextScreen(5), 350);
 }
 
-
-
-/* ===============================
-   FINAL TICKET
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   TICKET / COUNTDOWN
+═══════════════════════════════════════════════════════════════ */
 function updateTicket(){
-
-
-    document
-        .getElementById(
-            "finalDate"
-        )
-        .innerText =
-
-            dateData.date
-            ||
-            "Choose a date";
-
-
-
-    document
-        .getElementById(
-            "finalTime"
-        )
-        .innerText =
-
-            dateData.time
-            ||
-            "Choose a time";
-
-
-
-    document
-        .getElementById(
-            "finalPlace"
-        )
-        .innerText =
-
-            dateData.place;
-
-
-
-    document
-        .getElementById(
-            "finalBring"
-        )
-        .innerText =
-
-            dateData.bring;
-
+  document.getElementById("finalDate").innerText = dateData.date || "Choose a date";
+  document.getElementById("finalTime").innerText = dateData.time || "Choose a time";
+  document.getElementById("finalPlace").innerText = dateData.place;
+  document.getElementById("finalBring").innerText = dateData.bring;
 }
-
-
-
-/* ===============================
-   TARGET DATE
-================================ */
 
 function getTargetDate(){
-
-
-    if(
-
-        !dateData.dateISO
-
-        ||
-
-        !dateData.time24
-
-    ){
-
-        return null;
-
-    }
-
-
-
-    const dateParts =
-
-        dateData.dateISO
-        .split("-")
-        .map(Number);
-
-
-
-    const timeParts =
-
-        dateData.time24
-        .split(":")
-        .map(Number);
-
-
-
-    return new Date(
-
-        dateParts[0],
-
-        dateParts[1] - 1,
-
-        dateParts[2],
-
-        timeParts[0],
-
-        timeParts[1],
-
-        0
-
-    );
-
+  if(!dateData.dateISO || !dateData.time24) return null;
+  const [y,m,d] = dateData.dateISO.split("-").map(Number);
+  const [hh,mm] = dateData.time24.split(":").map(Number);
+  return new Date(y, m-1, d, hh, mm, 0);
 }
-
-
-
-/* ===============================
-   COUNTDOWN
-================================ */
 
 function startCountdown(){
-
-
-    if(countdownTimer){
-
-        clearInterval(
-            countdownTimer
-        );
-
-    }
-
-
-    updateCountdown();
-
-
-    countdownTimer =
-
-        setInterval(
-
-            updateCountdown,
-
-            1000
-
-        );
-
+  if(countdownTimer) clearInterval(countdownTimer);
+  updateCountdown();
+  countdownTimer = setInterval(updateCountdown, 1000);
 }
-
-
 
 function updateCountdown(){
-
-
-    const output =
-
-        document.getElementById(
-            "countdown"
-        );
-
-
-    const target =
-
-        getTargetDate();
-
-
-
-    if(!target){
-
-        output.innerText =
-            "Choose a date first 💗";
-
-        return;
-
-    }
-
-
-
-    const now =
-        new Date();
-
-
-    let difference =
-
-        target.getTime()
-        -
-        now.getTime();
-
-
-
-    if(
-        difference <= 0
-    ){
-
-        output.innerText =
-            "It's date time! 💗";
-
-
-        if(countdownTimer){
-
-            clearInterval(
-                countdownTimer
-            );
-
-        }
-
-
-        return;
-
-    }
-
-
-
-    const days =
-
-        Math.floor(
-            difference
-            /
-            86400000
-        );
-
-
-    difference %=
-        86400000;
-
-
-
-    const hours =
-
-        Math.floor(
-            difference
-            /
-            3600000
-        );
-
-
-    difference %=
-        3600000;
-
-
-
-    const minutes =
-
-        Math.floor(
-            difference
-            /
-            60000
-        );
-
-
-    difference %=
-        60000;
-
-
-
-    const seconds =
-
-        Math.floor(
-            difference
-            /
-            1000
-        );
-
-
-
-    output.innerText =
-
-        days
-        +
-        "D "
-        +
-        String(hours)
-        .padStart(2,"0")
-        +
-        ":"
-        +
-        String(minutes)
-        .padStart(2,"0")
-        +
-        ":"
-        +
-        String(seconds)
-        .padStart(2,"0");
-
+  const output = document.getElementById("countdown");
+  const target = getTargetDate();
+  if(!target){ output.innerText = "Choose a date first 💗"; return; }
+  const now = new Date();
+  let diff = target.getTime() - now.getTime();
+  if(diff <= 0){
+    output.innerText = "It's date time! 💗";
+    if(countdownTimer) clearInterval(countdownTimer);
+    return;
+  }
+  const days = Math.floor(diff/86400000); diff %= 86400000;
+  const hours = Math.floor(diff/3600000); diff %= 3600000;
+  const minutes = Math.floor(diff/60000); diff %= 60000;
+  const seconds = Math.floor(diff/1000);
+  output.innerText = `${days}D ${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
 }
 
-
-
-/* ===============================
-   ADD TO REAL CALENDAR
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   CALENDAR FILE / SHARE
+═══════════════════════════════════════════════════════════════ */
 function toICSDate(date){
-
-
-    return date
-
-        .toISOString()
-
-        .replace(
-            /[-:]/g,
-            ""
-        )
-
-        .replace(
-            /\.\d{3}/,
-            ""
-        );
-
+  return date.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
 }
-
-
 
 function downloadCalendarEvent(){
-
-
-    const start =
-
-        getTargetDate();
-
-
-
-    if(!start){
-
-        showToast(
-            "Choose date and time first 💗"
-        );
-
-        return;
-
-    }
-
-
-
-    const end =
-
-        new Date(
-
-            start.getTime()
-            +
-            2
-            *
-            60
-            *
-            60
-            *
-            1000
-
-        );
-
-
-
-    const description =
-
-        "Date with Cherissa. "
-        +
-        "Plan: "
-        +
-        dateData.place
-        +
-        ". Bring: "
-        +
-        dateData.bring
-        +
-        ".";
-
-
-
-    const calendarText =
-
+  const start = getTargetDate();
+  if(!start){ showToast("Choose date and time first 💗"); return; }
+  const end = new Date(start.getTime() + 2*60*60*1000);
+  const description = `Date with Cherissa. Plan: ${dateData.place}. Bring: ${dateData.bring}.`;
+  const calendarText =
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Sabin Date Invite//EN
@@ -3943,430 +719,98 @@ SUMMARY:Date with Cherissa 💗
 DESCRIPTION:${description}
 END:VEVENT
 END:VCALENDAR`;
-
-
-
-    const blob =
-
-        new Blob(
-
-            [calendarText],
-
-            {
-
-                type:
-                "text/calendar;charset=utf-8"
-
-            }
-
-        );
-
-
-
-    const url =
-
-        URL.createObjectURL(
-            blob
-        );
-
-
-
-    const link =
-
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    link.download =
-        "date-with-cherissa.ics";
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
-
-
-    URL.revokeObjectURL(
-        url
-    );
-
-
-    showToast(
-        "Calendar file ready 💗"
-    );
-
+  const blob = new Blob([calendarText], {type:"text/calendar;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "date-with-cherissa.ics";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  showToast("Calendar file ready 💗");
 }
-
-
-
-/* ===============================
-   SHARE DATE
-================================ */
 
 async function shareDate(){
-
-
-    if(
-
-        !dateData.date
-
-        ||
-
-        !dateData.time
-
-    ){
-
-        showToast(
-            "Choose the date first 💗"
-        );
-
-        return;
-
+  if(!dateData.date || !dateData.time){ showToast("Choose the date first 💗"); return; }
+  const text = `It's a date! 💗\n\nWhen: ${dateData.date}\nTime: ${dateData.time}\nPlan: ${dateData.place}\nBring: ${dateData.bring}\n\nSabin & Cherissa 💕`;
+  try{
+    if(navigator.share){
+      await navigator.share({title:"It's a date! 💗", text});
+    } else {
+      await navigator.clipboard.writeText(text);
+      showToast("Date details copied 💗");
     }
-
-
-
-    const text =
-
-`It's a date! 💗
-
-When: ${dateData.date}
-
-Time: ${dateData.time}
-
-Plan: ${dateData.place}
-
-Bring: ${dateData.bring}
-
-Sabin & Cherissa 💕`;
-
-
-
-    try{
-
-
-        if(
-            navigator.share
-        ){
-
-
-            await navigator.share({
-
-                title:
-                    "It's a date! 💗",
-
-                text:text
-
-            });
-
-        }
-
-
-        else{
-
-
-            await navigator
-                .clipboard
-                .writeText(
-                    text
-                );
-
-
-            showToast(
-                "Date details copied 💗"
-            );
-
-        }
-
-
-    }
-
-    catch(error){
-
-        console.log(
-            error
-        );
-
-    }
-
+  } catch(error){ console.log(error); }
 }
 
-
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    TOAST
-================================ */
-
-function showToast(
-    message
-){
-
-
-    const toast =
-
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.innerText =
-
-        message
-        ||
-        "Saved 💗";
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        showToast.timer
-    );
-
-
-    showToast.timer =
-
-        setTimeout(
-            function(){
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2600
-        );
-
+═══════════════════════════════════════════════════════════════ */
+function showToast(message){
+  const toast = document.getElementById("toast");
+  toast.innerText = message || "Saved 💗";
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove("show"), 2600);
 }
 
-
-
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    RESTART
-================================ */
-
+═══════════════════════════════════════════════════════════════ */
 function restartExperience(){
-
-
-    dateData = {
-
-        dateISO:"",
-
-        date:"",
-
-        time:"",
-
-        time24:"",
-
-        place:"Dessert",
-
-        bring:"Flowers"
-
-    };
-
-
-    noCount = 0;
-
-
-
-    const noButton =
-
-        document.getElementById(
-            "noBtn"
-        );
-
-
-    noButton.innerText =
-        "No";
-
-
-    noButton.style.transform =
-        "";
-
-
-    noButton.onmouseenter =
-        runAway;
-
-
-    noButton.onclick =
-        runAway;
-
-
-
-    document
-        .querySelectorAll(
-            ".selected"
-        )
-        .forEach(
-            function(item){
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-
-    document
-        .getElementById(
-            "selectedDateText"
-        )
-        .innerText =
-
-            "Tap any day you like 💗";
-
-
-
-    const today =
-        new Date();
-
-
-    viewingMonth =
-
-        today.getFullYear()
-        ===
-        CALENDAR_YEAR
-
-        ?
-
-        today.getMonth()
-
-        :
-
-        0;
-
-
-
-    renderCalendar();
-
-
-
-    if(countdownTimer){
-
-        clearInterval(
-            countdownTimer
-        );
-
-    }
-
-
-
-    nextScreen(1);
-
+  dateData = { dateISO:"", date:"", time:"", time24:"", place:"Dessert", bring:"Flowers" };
+  noCount = 0;
+  const noButton = document.getElementById("noBtn");
+  noButton.innerText = "No";
+  noButton.style.transform = "";
+  noButton.onmouseenter = runAway;
+  noButton.onclick = runAway;
+  document.querySelectorAll(".selected").forEach(item => item.classList.remove("selected"));
+  document.getElementById("selectedDateText").innerText = "Tap any day you like 💗";
+  const today = new Date();
+  viewingMonth = today.getFullYear() === CALENDAR_YEAR ? today.getMonth() : 0;
+  renderCalendar();
+  if(countdownTimer) clearInterval(countdownTimer);
+  nextScreen(1);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   AMBIENT FLOATING HEARTS & PETALS — paused off-screen, respects
+   reduced-motion, one quiet ongoing atmosphere rather than clutter
+═══════════════════════════════════════════════════════════════ */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const glyphs = ["♥","♡","🌸","✨"];
+let ambientTimer = null;
 
-
-/* ===============================
-   FLOATING HEARTS
-================================ */
-
-function createHeart(){
-
-
-    const heart =
-
-        document.createElement(
-            "div"
-        );
-
-
-    heart.className =
-        "background-heart";
-
-
-    heart.innerText =
-
-        Math.random() > .5
-        ?
-        "♥"
-        :
-        "♡";
-
-
-    heart.style.left =
-
-        Math.random()
-        *
-        100
-        +
-        "vw";
-
-
-    heart.style.fontSize =
-
-        (
-            Math.random()
-            *
-            17
-            +
-            9
-        )
-        +
-        "px";
-
-
-    heart.style.animationDuration =
-
-        (
-            Math.random()
-            *
-            5
-            +
-            7
-        )
-        +
-        "s";
-
-
-    document.body.appendChild(
-        heart
-    );
-
-
-    setTimeout(
-        function(){
-
-            heart.remove();
-
-        },
-        13000
-    );
-
+function createDrift(){
+  const el = document.createElement("div");
+  el.className = "drift";
+  el.innerText = glyphs[Math.floor(Math.random()*glyphs.length)];
+  el.style.left = Math.random()*100 + "vw";
+  el.style.setProperty("--dx", (Math.random()*60-30) + "px");
+  el.style.fontSize = (Math.random()*16+9) + "px";
+  el.style.animationDuration = (Math.random()*5+8) + "s";
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 14000);
 }
 
+function startAmbient(){
+  if(prefersReducedMotion || ambientTimer) return;
+  ambientTimer = setInterval(createDrift, 1100);
+}
+function stopAmbient(){
+  if(ambientTimer){ clearInterval(ambientTimer); ambientTimer = null; }
+}
+document.addEventListener("visibilitychange", () => {
+  if(document.hidden) stopAmbient(); else startAmbient();
+});
+startAmbient();
 
-
-setInterval(
-    createHeart,
-    850
-);
-
-
-
-/* ===============================
-   START CALENDAR
-================================ */
-
+/* ═══════════════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════════════ */
 renderCalendar();
-
 </script>
-
-
 </body>
 </html>
